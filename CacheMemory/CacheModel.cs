@@ -20,7 +20,8 @@ namespace CacheMemory
 
         public static object Get(string email)
         {
-             return _memoryCache.Get(email);
+             var cache = _memoryCache.Get(email);
+			return cache;
         }
 
 		public static void Remove(string valueKey)

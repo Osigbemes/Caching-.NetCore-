@@ -15,20 +15,20 @@ namespace CacheMemory.Controllers
         public ActionResult CreateCache(CacheDto cache)
         {
             CacheModel.Add(cache);
+            return Ok($"Cache added with key {cache.Email}");
+        }
+
+        [HttpDelete("{email}")]
+        public ActionResult RemoveCache(string email)
+        {
+            CacheModel.Remove(email);
             return Ok();
         }
 
-        [HttpDelete]
-        public ActionResult RemoveCache(CacheDto cache)
+        [HttpGet("{email}")]
+        public ActionResult<CacheDto> GetCache(string email)
         {
-            CacheModel.Remove(cache.Email);
-            return Ok();
-        }
-
-        [HttpGet]
-        public ActionResult<CacheDto> GetCache(CacheDto cache)
-        {
-            return Ok(CacheModel.Get(cache.Email));
+            return Ok(CacheModel.Get(email));
         }
     }
 }

@@ -22,7 +22,7 @@ namespace CacheMemory.Controllers
         public ActionResult RemoveCache(string email)
         {
             CacheModel.Remove(email);
-            return Ok();
+            return Ok($"Cache deleted with key {email}");
         }
 
         [HttpGet("{email}")]

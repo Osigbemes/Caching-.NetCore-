@@ -11,17 +11,16 @@ namespace CacheMemory
 		{
 			var cacheExpirationOptions = new MemoryCacheEntryOptions()
 			{
-				AbsoluteExpiration = DateTime.Now.AddSeconds(50),
+				AbsoluteExpiration = DateTime.Now.AddSeconds(5000),
 				Priority = CacheItemPriority.High,
-				SlidingExpiration = TimeSpan.FromSeconds(20)
+				SlidingExpiration = TimeSpan.FromSeconds(200)
 			};
 			_memoryCache.Set(cache.Email, cache, cacheExpirationOptions);
 		}
 
         public static object Get(string email)
         {
-             var cache = _memoryCache.Get(email);
-			return cache;
+             return _memoryCache.Get(email);
         }
 
 		public static void Remove(string valueKey)

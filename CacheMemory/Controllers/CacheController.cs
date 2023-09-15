@@ -12,24 +12,23 @@ namespace CacheMemory.Controllers
 		}
 
         [HttpPost]
-        public IActionResult CreateCache(CacheDto cache)
+        public ActionResult CreateCache(CacheDto cache)
         {
-            CacheModel.Add(cache.ValueKey, cache.Key);
+            CacheModel.Add(cache);
             return Ok();
         }
 
         [HttpDelete]
-        public IActionResult RemoveCache(CacheDto cache)
+        public ActionResult RemoveCache(CacheDto cache)
         {
-            CacheModel.Remove(cache.ValueKey);
+            CacheModel.Remove(cache.Email);
             return Ok();
         }
 
         [HttpGet]
-        public IActionResult GetCache(CacheDto cache)
+        public ActionResult<CacheDto> GetCache(CacheDto cache)
         {
-            CacheModel.Get(cache.ValueKey);
-            return Ok();
+            return Ok(CacheModel.Get(cache.Email));
         }
     }
 }

@@ -3,8 +3,9 @@ namespace CacheMemory
 {
 	public class CacheDto
 	{
-		public string ValueKey { get; set; }
-		public int Key { get; set; }
+		public string Email { get; set; }
+		public int SubscriberId { get; set; }
+		public string UserId { get; set; }
 	}
 }
 

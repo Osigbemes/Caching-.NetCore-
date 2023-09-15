@@ -7,7 +7,7 @@ namespace CacheMemory
 	{
 		private static IMemoryCache _memoryCache = new MemoryCache(new MemoryCacheOptions());
 
-		public static void Add(string valueKey, int key)
+		public static void Add(CacheDto cache)
 		{
 			var cacheExpirationOptions = new MemoryCacheEntryOptions()
 			{
@@ -15,13 +15,12 @@ namespace CacheMemory
 				Priority = CacheItemPriority.High,
 				SlidingExpiration = TimeSpan.FromSeconds(20)
 			};
-			_memoryCache.Set(valueKey, cacheExpirationOptions);
+			_memoryCache.Set(cache.Email, cache, cacheExpirationOptions);
 		}
 
-        public static int Get(string valueKey)
+        public static object Get(string email)
         {
-            var cacheMemory = _memoryCache.Get(valueKey);
-			return Convert.ToInt32(cacheMemory);
+             return _memoryCache.Get(email);
         }
 
 		public static void Remove(string valueKey)

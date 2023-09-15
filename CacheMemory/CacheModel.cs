@@ -11,9 +11,9 @@ namespace CacheMemory
 		{
 			var cacheExpirationOptions = new MemoryCacheEntryOptions()
 			{
-				AbsoluteExpiration = DateTime.Now.AddSeconds(5000),
+				AbsoluteExpiration = DateTime.Now.AddSeconds(120),
 				Priority = CacheItemPriority.High,
-				SlidingExpiration = TimeSpan.FromSeconds(200)
+				SlidingExpiration = TimeSpan.FromSeconds(100)
 			};
 			_memoryCache.Set(cache.Email, cache, cacheExpirationOptions);
 		}
